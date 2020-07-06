@@ -1,5 +1,7 @@
 # BrBaU (Breaking Bad Universe)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/21e94ff5-fd1e-4069-bb6a-7a75422488f2/deploy-status)](https://app.netlify.com/sites/amazing-tesla-07e06d/deploys)
+
 A react based front end for [breaking bad api](https://www.breakingbadapi.com/).
 
 
