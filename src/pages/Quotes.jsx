@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Col, Row } from 'reactstrap';
+import { Container } from 'reactstrap';
 import { QUOTES_URL } from '../config/urls';
-import Quote from '../components/Quote';
+import QuoteRow from '../components/QuoteRow';
+import { generateQuoteRows } from '../utils';
 
 /**
  * Quotes page
@@ -19,22 +20,18 @@ const Quotes = () => {
     }).then((response) => setQuotes(response.data));
   }, []);
 
-  const quoteList = quotes.map((quote) => (
-    <>
-      <Quote quote={quote} />
-      <hr />
-    </>
-  ));
+  const rows = generateQuoteRows(quotes);
+
+  // eslint-disable-next-line react/no-array-index-key
+  const quoteList = rows.map((row, index) => <QuoteRow key={index} quotes={row} />);
 
   return (
     <Container>
-      <Row>
-        <Col md={{ size: 6, offset: 3 }}>
-          <h1 className="text-center">Quotes</h1>
-          <hr />
-          {quoteList}
-        </Col>
-      </Row>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h1 className="text-center">Quotes</h1>
+      <hr />
+      {quoteList}
     </Container>
   );
 };

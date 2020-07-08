@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {
-  Container, Col, Row, Card, CardHeader, CardBody,
-} from 'reactstrap';
+import { Container, Col, Row } from 'reactstrap';
 import { RANDOM_CHARACTER_URL, RANDOM_QUOTE_URL } from '../config/urls';
 import Person from '../components/Person';
 import Quote from '../components/Quote';
+import { RED, ORANGE } from '../config/colours';
 
 /**
  * Home page
@@ -14,12 +13,15 @@ import Quote from '../components/Quote';
  */
 const Home = () => {
   const [randomCharacter, setRandomCharacter] = useState({
+    char_id: 0,
     name: '',
     nickname: '',
     img: '',
     occupation: [],
+    status: '',
   });
   const [randomQuote, setRandomQuote] = useState({
+    quote_id: 0,
     quote: '',
     author: '',
   });
@@ -42,24 +44,42 @@ const Home = () => {
     ));
   }, []);
 
+  const quoteBoxStyle = {
+    backgroundColor: ORANGE,
+  };
+
+  const personBoxStyle = {
+    backgroundColor: RED,
+  };
+
   return (
-    <Container>
-      <Row>
-        <Col md={{ size: 6, offset: 3 }}>
-          <Card>
-            <CardHeader>
-              <h1 className="text-center">Quote of the Day</h1>
-            </CardHeader>
-            <CardBody>
+    <>
+      <Container fluid style={quoteBoxStyle}>
+        <Row>
+          <Col md={{ size: 6, offset: 3 }}>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <h1 className="text-center">Quote of the Day</h1>
+            <hr />
+            <div className="text-center">
               <Quote quote={randomQuote} />
-            </CardBody>
-          </Card>
-          <hr />
-          <h1 className="text-center">Person of the Day</h1>
-          <Person profile={randomCharacter} />
-        </Col>
-      </Row>
-    </Container>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <Container fluid style={personBoxStyle}>
+        <Row>
+          <Col md={{ size: 6, offset: 3 }}>
+            <p>&nbsp;</p>
+            <h1 className="text-center">Person of the Day</h1>
+            <hr />
+            <Person profile={randomCharacter} />
+            <p>&nbsp;</p>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

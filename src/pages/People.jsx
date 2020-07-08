@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Col, Row } from 'reactstrap';
+import { Container } from 'reactstrap';
 import { CHARACTERS_URL } from '../config/urls';
-import Person from '../components/Person';
+import PeopleRow from '../components/PeopleRow';
+import { generatePeopleRows } from '../utils';
 
 /**
  * People page
@@ -19,22 +20,18 @@ const People = () => {
     }).then((response) => setPeople(response.data));
   }, []);
 
-  const quoteList = people.map((person) => (
-    <>
-      <Person profile={person} />
-      <hr />
-    </>
-  ));
+  const rows = generatePeopleRows(people);
+
+  // eslint-disable-next-line react/no-array-index-key
+  const peopleList = rows.map((profiles, index) => <PeopleRow key={index} profiles={profiles} />);
 
   return (
     <Container>
-      <Row>
-        <Col md={{ size: 6, offset: 3 }}>
-          <h1 className="text-center">People</h1>
-          <hr />
-          {quoteList}
-        </Col>
-      </Row>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h1 className="text-center">People</h1>
+      <hr />
+      {peopleList}
     </Container>
   );
 };

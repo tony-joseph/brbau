@@ -19,9 +19,9 @@ const MainMenu = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Navbar color="dark" dark expand="md" fixed="top">
+    <Navbar color="dark" dark expand="md" fixed="top" className="main-nav">
       <Container>
-        <NavbarBrand href="/">BrBa</NavbarBrand>
+        <NavbarBrand href="/">BrBaU</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>

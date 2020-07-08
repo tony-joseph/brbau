@@ -1,20 +1,32 @@
 import React from 'react';
-import { Card, CardHeader, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { PersonProp } from '../types';
 
 /**
  * Renders the profile of a single character.
  */
 const Person = (props) => {
-  const { profile } = props;
+  const { profile, color } = props;
+  const style = {
+    backgroundColor: color,
+    height: '100%',
+  };
+  const imgStyle = {
+    height: '320px',
+  };
+
   return (
-    <Card>
-      <CardHeader>
-        <h4 className="text-center">{profile.name}</h4>
-      </CardHeader>
-      <img src={profile.img} alt={profile.name} className="card-img-top" />
+    <div style={style}>
+      <div className="text-center">
+        <img src={profile.img} alt={profile.name} className="img-fluid rounded" style={imgStyle} />
+      </div>
       <Table>
         <tbody>
+          <tr>
+            <td>Name</td>
+            <td>{`: ${profile.name}`}</td>
+          </tr>
           <tr>
             <td>Nickname</td>
             <td>{`: ${profile.nickname}`}</td>
@@ -29,18 +41,17 @@ const Person = (props) => {
           </tr>
         </tbody>
       </Table>
-    </Card>
+    </div>
   );
 };
 
 Person.propTypes = {
-  profile: PropTypes.shape({
-    name: PropTypes.string,
-    nickname: PropTypes.string,
-    img: PropTypes.string,
-    occupation: PropTypes.arrayOf(PropTypes.string),
-    status: PropTypes.string,
-  }).isRequired,
+  profile: PersonProp.isRequired,
+  color: PropTypes.string,
+};
+
+Person.defaultProps = {
+  color: '',
 };
 
 export default Person;

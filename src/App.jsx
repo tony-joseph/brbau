@@ -6,6 +6,7 @@ import People from './pages/People';
 import Quotes from './pages/Quotes';
 
 import './static/bootstrap.css';
+import './static/styles.css';
 
 const App = () => (
   <BrowserRouter>

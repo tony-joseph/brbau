@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 import MainMenu from '../navigation/MainMenu';
 import Footer from '../navigation/Footer';
@@ -13,12 +12,7 @@ const MainLayout = (props) => {
   return (
     <>
       <MainMenu />
-      <Container>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        {children}
-      </Container>
+      {children}
       <Footer />
     </>
   );
