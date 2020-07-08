@@ -56,7 +56,7 @@ const Home = () => {
     <>
       <Container fluid style={quoteBoxStyle}>
         <Row>
-          <Col md={{ size: 6, offset: 3 }}>
+          <Col md={{ size: 4, offset: 4 }}>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -70,7 +70,7 @@ const Home = () => {
       </Container>
       <Container fluid style={personBoxStyle}>
         <Row>
-          <Col md={{ size: 6, offset: 3 }}>
+          <Col md={{ size: 4, offset: 4 }}>
             <p>&nbsp;</p>
             <h1 className="text-center">Person of the Day</h1>
             <hr />
